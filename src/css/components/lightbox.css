@@ -9,6 +9,9 @@
     border: 10px solid #ccc;
     border-radius: 20px;
     overflow: visible;
+    display: none;
+        opacity: 0;
+        transition: opacity 0.5s;
 }
 
 #lightbox::before {
@@ -29,5 +32,34 @@
 
 ::backdrop {
     background-color: #eef;
-    opacity: o.8;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+#lightbox.show {
+    display: block;
+    animation: fadeIn 0.5s forwards;
+}
+
+#lightbox.hide {
+    animation: fadeOut 0.5s forwards;
 }

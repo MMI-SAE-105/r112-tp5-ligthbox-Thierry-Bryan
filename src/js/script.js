@@ -22,15 +22,15 @@ const lightboxImg = document.querySelector('#lightbox > img');
 listThumbnail.forEach((thumbnail) => {
     thumbnail.addEventListener('click', (evt) => {
         lightboxImg.src = thumbnail.dataset.fullImg;
-        lightbox.classList.add('show');
-        lightbox.classList.remove('hide');
+        lightbox.classList.add('open');
+        lightbox.classList.remove('close');
     });
 });
 
 lightbox.addEventListener('click', () => {
-    lightbox.classList.add('hide');
-    lightbox.classList.remove('show');
+    lightbox.classList.add('close');
+    lightbox.classList.remove('open');
     setTimeout(() => {
         lightbox.close();
-    }, 500); // Durée de l'animation
+    }, 500); 
 });

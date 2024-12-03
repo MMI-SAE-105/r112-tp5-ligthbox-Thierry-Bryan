@@ -5,61 +5,71 @@
 #lightbox {
     position: fixed;
     padding: 30px;
-    background: #ddd;
-    border: 10px solid #ccc;
+    background: #b8eaff;
+    border: 10px solid #06328f;
     border-radius: 20px;
     overflow: visible;
     display: none;
-        opacity: 0;
-        transition: opacity 0.5s;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#lightbox::backdrop {
+    background: rgb(255, 0, 0);
 }
 
 #lightbox::before {
     content: 'X';
-    display: block;
+    display: flex;
     position: absolute;
-    top: 10px;
+    top: -10px;
     right: -10px;
-    color: #666;
+    color: #06328f;
     width: 40px;
     height: 40px;
     place-content: center;
-    background-color: white;
+    background-color: #ffffff;
     line-height: 40px;
     border-radius: 50%;
     z-index: 10;
+    
 }
 
 ::backdrop {
-    background-color: #eef;
+    background: rgb(0, 0, 252);
     opacity: 0.8;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: 0;
-    }
-}
-
-#lightbox.show {
+#lightbox.open {
     display: block;
-    animation: fadeIn 0.5s forwards;
+    animation: opening 0.5s forwards;
 }
 
-#lightbox.hide {
-    animation: fadeOut 0.5s forwards;
+#lightbox.close {
+    display: block;
+    animation: closing 0.5s forwards;
+}
+
+@keyframes opening {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+}
+
+@keyframes closing {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0);
+    }
+    
 }
